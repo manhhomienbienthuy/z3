@@ -2464,7 +2464,7 @@ def mk_config():
             OS_DEFINES     = '-D_OPENBSD_'
             SO_EXT         = '.so'
             SLIBFLAGS      = '-shared'
-        elif sysname[:6] ==  'CYGWIN':
+        elif sysname[:6] == 'CYGWIN' or sysname[:7] == 'MSYS_NT':
             CXXFLAGS    = '%s -D_CYGWIN -fno-strict-aliasing' % CXXFLAGS
             OS_DEFINES     = '-D_CYGWIN'
             SO_EXT      = '.dll'
