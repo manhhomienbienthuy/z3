@@ -613,6 +613,8 @@ elif os.name == 'posix':
         IS_CYGWIN=True
         if (CC != None and "mingw" in CC):
             IS_CYGWIN_MINGW=True
+    elif os.uname()[0][:7] == 'MSYS_NT':
+        IS_CYGWIN_MINGW=True
 
 def display_help(exit_code):
     print("mk_make.py: Z3 Makefile generator\n")
@@ -2464,7 +2466,7 @@ def mk_config():
             OS_DEFINES     = '-D_OPENBSD_'
             SO_EXT         = '.so'
             SLIBFLAGS      = '-shared'
-        elif sysname[:6] == 'CYGWIN' or sysname[:7] == 'MSYS_NT':
+        elif sysname[:6] == 'CYGWIN':
             CXXFLAGS    = '%s -D_CYGWIN -fno-strict-aliasing' % CXXFLAGS
             OS_DEFINES     = '-D_CYGWIN'
             SO_EXT      = '.dll'
